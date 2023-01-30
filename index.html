@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="L1.css">
+</head>
+<body>
+    <div>
+        <h2>Event Listeners</h2>
+        <section>
+            <h3>Submit Event - JavaScript</h3>
+        </section>
+        <form id="myForm" class="form">
+            <label for="username">Username</label>
+            <input type="text" placeholder="Username" id="username" class="input" autocomplete="off">
+            <label for="Password">Password</label>
+            <input type="password" placeholder="Password" id="password" class="input" autocomplete="off" required>
+            <button type="submit" id="submitBtn">Login</button>
+        </form>
+        <h4 class="comment">f</h4>
+    </div>
+    <script>
+        const myForm = document.getElementById("myForm");
+        const username = document.getElementById("username");
+        const password = document.getElementById("password");
+        const comment = document.querySelector(".comment");
+
+        myForm.addEventListener("submit", (event) => {
+        let messages = [];
+        if (username.value === "" || username.value === null) {
+            messages.push("Name is required");
+        }
+
+        if (password.value.length <= 7) {
+            event.preventDefault();
+            alert("Password Must Be Longer Than 7 Characters!");
+            return;
+        }
+
+        if (username.value.length > 0) {
+            event.preventDefault();
+            comment.innerHTML = "Loading...";
+            return;
+        }
+
+        setTimeout(function(e) {
+            myForm.submit();
+        }, 500);
+        myForm.innerHTML = "Form has been submitted";
+        console.log("Form has been submitted!");
+        });
+    </script>
+</body>
+</html>
